@@ -5,8 +5,8 @@
     
     <entry>
       <title>如何解决centos8下载速度慢</title>
-      <link href="/2021/09/19/test-title/"/>
-      <url>/2021/09/19/test-title/</url>
+      <link href="/2021/09/19/ru-he-jie-jue-centos8-xia-zai-su-du-man/"/>
+      <url>/2021/09/19/ru-he-jie-jue-centos8-xia-zai-su-du-man/</url>
       
         <content type="html"><![CDATA[<h1 id="如何解决centos8下载速度慢"><a href="#如何解决centos8下载速度慢" class="headerlink" title="如何解决centos8下载速度慢"></a>如何解决centos8下载速度慢</h1><h2 id="原因分析："><a href="#原因分析：" class="headerlink" title="原因分析："></a>原因分析：</h2><p>由于yum源的镜像在国外，所以导致国内的下载速度偏慢，使用国内的镜像即可解决此问题。<br>1</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1.<code>cd /etc/yum.repos.d </code>进入yum源目录</p><p><code>mkdir backup </code>建立备份目录</p><p>2.<code>mv *.repo backup/</code>备份原有的镜像，目的是存放linux系统默认的repo文件，让yum找不到默认的仓库文件</p><p>3.<code>curl -O https://mirrors.aliyun.com/repo/Centos-8.repo </code>下载镜像，此为centos8的镜像<br>Centos5 <a href="https://mirrors.aliyun.com/repo/Centos-5.repo">https://mirrors.aliyun.com/repo/Centos-5.repo</a><br>Centos6 <a href="https://mirrors.aliyun.com/repo/Centos-6.repo">https://mirrors.aliyun.com/repo/Centos-6.repo</a><br>Centos7 <a href="https://mirrors.aliyun.com/repo/Centos-7.repo">https://mirrors.aliyun.com/repo/Centos-7.repo</a><br>Centos8 <a href="https://mirrors.aliyun.com/repo/Centos-8.repo">https://mirrors.aliyun.com/repo/Centos-8.repo</a></p><p>4.<code>yum install go -y</code>下载</p>]]></content>
       
@@ -23,19 +23,6 @@
             <tag> linux </tag>
             
         </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>Hello World</title>
-      <link href="/2021/09/19/hello-world/"/>
-      <url>/2021/09/19/hello-world/</url>
-      
-        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
-      
-      
       
     </entry>
     
