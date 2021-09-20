@@ -4,13 +4,25 @@
   
     
     <entry>
-      <title>test title</title>
+      <title>如何解决centos8下载速度慢</title>
       <link href="/2021/09/19/test-title/"/>
       <url>/2021/09/19/test-title/</url>
       
-        <content type="html"><![CDATA[<p>first</p><p>second</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="如何解决centos8下载速度慢"><a href="#如何解决centos8下载速度慢" class="headerlink" title="如何解决centos8下载速度慢"></a>如何解决centos8下载速度慢</h1><h2 id="原因分析："><a href="#原因分析：" class="headerlink" title="原因分析："></a>原因分析：</h2><p>由于yum源的镜像在国外，所以导致国内的下载速度偏慢，使用国内的镜像即可解决此问题。<br>1</p><h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>1.<code>cd /etc/yum.repos.d </code>进入yum源目录</p><p><code>mkdir backup </code>建立备份目录</p><p>2.<code>mv *.repo backup/</code>备份原有的镜像，目的是存放linux系统默认的repo文件，让yum找不到默认的仓库文件</p><p>3.<code>curl -O https://mirrors.aliyun.com/repo/Centos-8.repo </code>下载镜像，此为centos8的镜像<br>Centos5 <a href="https://mirrors.aliyun.com/repo/Centos-5.repo">https://mirrors.aliyun.com/repo/Centos-5.repo</a><br>Centos6 <a href="https://mirrors.aliyun.com/repo/Centos-6.repo">https://mirrors.aliyun.com/repo/Centos-6.repo</a><br>Centos7 <a href="https://mirrors.aliyun.com/repo/Centos-7.repo">https://mirrors.aliyun.com/repo/Centos-7.repo</a><br>Centos8 <a href="https://mirrors.aliyun.com/repo/Centos-8.repo">https://mirrors.aliyun.com/repo/Centos-8.repo</a></p><p>4.<code>yum install go -y</code>下载</p>]]></content>
       
       
+      <categories>
+          
+          <category> Markdown </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
       
     </entry>
     
