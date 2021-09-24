@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>linux修改默认python版本</title>
+      <link href="/2021/09/24/linux-xiu-gai-mo-ren-python-ban-ben/"/>
+      <url>/2021/09/24/linux-xiu-gai-mo-ren-python-ban-ben/</url>
+      
+        <content type="html"><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>想将默认 python 启动设置为 python3</p><h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>使用软链接解决</p><p><code># which python /usr/bin/python2</code></p><p>删除python的软链接</p><p><code># ls -li /usr/bin/python2 279870 lrwxrwxrwx 1 root root 9 Jul  6 10:26 /usr/bin/python2 -&gt; python </code><br><code>rm -rf /usr/bin/python2</code></p><p>为python添加软链接到python3</p><p><code>ln -s /usr/bin/python3 python</code></p><p>这个时候输入python 会发现编译器是python3<br><code>python Python 3.6.8 (default, Nov 16 2020, 16:55:22) </code></p><h1 id="排错"><a href="#排错" class="headerlink" title="排错"></a>排错</h1><p><code>ln: failed to create symbolic link ‘python’: File exists</code></p><p>报错显示文件已有软链接</p><p>这个时候需要使用强制命令进行软链接</p><p><code> ln -sf /usr/bin/python3 python</code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> python </tag>
+            
+            <tag> 软链接、硬链接 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>基于k8s的nginx双VIP高可用集群</title>
       <link href="/2021/09/21/ji-yu-k8s-de-nginx-shuang-vip-gao-ke-yong-ji-qun/"/>
       <url>/2021/09/21/ji-yu-k8s-de-nginx-shuang-vip-gao-ke-yong-ji-qun/</url>
@@ -94,35 +123,6 @@
         <tags>
             
             <tag> mysql </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>如何解决centos8下载速度慢</title>
-      <link href="/2021/09/19/linux-xiu-gai-mo-ren-python-ban-ben/"/>
-      <url>/2021/09/19/linux-xiu-gai-mo-ren-python-ban-ben/</url>
-      
-        <content type="html"><![CDATA[<h1 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h1><p>想将默认 python 启动设置为 python3</p><h1 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h1><p>使用软链接解决</p><p><code># which python /usr/bin/python2</code></p><p>删除python的软链接</p><p><code># ls -li /usr/bin/python2 279870 lrwxrwxrwx 1 root root 9 Jul  6 10:26 /usr/bin/python2 -&gt; python </code><br><code>rm -rf /usr/bin/python2</code></p><p>为python添加软链接到python3</p><p><code>ln -s /usr/bin/python3 python</code></p><p>这个时候输入python 会发现编译器是python3<br><code>python Python 3.6.8 (default, Nov 16 2020, 16:55:22) </code></p><h1 id="排错"><a href="#排错" class="headerlink" title="排错"></a>排错</h1><p><code>ln: failed to create symbolic link ‘python’: File exists</code></p><p>报错显示文件已有软链接</p><p>这个时候需要使用强制命令进行软链接</p><p><code> ln -sf /usr/bin/python3 python</code></p>]]></content>
-      
-      
-      <categories>
-          
-          <category> 学习笔记 </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> linux </tag>
-            
-            <tag> python </tag>
-            
-            <tag> 软链接、硬链接 </tag>
             
         </tags>
       
