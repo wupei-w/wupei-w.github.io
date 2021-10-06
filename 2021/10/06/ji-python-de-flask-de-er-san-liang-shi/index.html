@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="完全备份+二进制日志备份, Vivant&#39;s Blog">
+    <meta name="keywords" content="记python的flask的二三两事, Vivant&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>完全备份+二进制日志备份 | Vivant&#39;s Blog</title>
+    <title>记python的flask的二三两事 | Vivant&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -243,12 +243,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">完全备份+二进制日志备份</h1>
+                    <h1 class="description center-align post-title">记python的flask的二三两事</h1>
                 </div>
             </div>
         </div>
@@ -362,13 +362,9 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/mysql/">
-                                <span class="chip bg-color">mysql</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -393,14 +389,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    943
+                    248
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    1 分
                 </div>
                 
 
@@ -415,62 +411,12 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="首先确保服务器开启二进制日志"><a href="#首先确保服务器开启二进制日志" class="headerlink" title="首先确保服务器开启二进制日志"></a><em><strong>首先确保服务器开启二进制日志</strong></em></h1><h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h2><h5 id="查看二进制文件"><a href="#查看二进制文件" class="headerlink" title="查看二进制文件"></a>查看二进制文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># ls</span></span><br><span class="line">auto.cnf         client-key.pem  ib_logfile1           localhost-bin.000004       localhost-slow.log  private_key.pem  server-key.pem  wp</span><br><span class="line">backup           game            ibtmp1                localhost-bin.index        mysql               public_key.pem   sys             wxj</span><br><span class="line">ca-key.pem       ib_buffer_pool  localhost-bin.000001  localhost.localdomain.err  mysql.sock          sanchuang        TENNIS</span><br><span class="line">ca.pem           ibdata1         localhost-bin.000002  localhost.localdomain.pid  mysql.sock.lock     sanchuang123     <span class="built_in">test</span></span><br><span class="line">client-cert.pem  ib_logfile0     localhost-bin.000003  localhost.log              performance_schema  server-cert.pem  w</span><br><span class="line">[root@localhost mysql]<span class="comment"># mysqlbinlog localhost-bin.000004</span></span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=1*/;</span><br><span class="line">/*!50003 SET @OLD_COMPLETION_TYPE=@@COMPLETION_TYPE,COMPLETION_TYPE=0*/;</span><br><span class="line">DELIMITER /*!*/;</span><br><span class="line"><span class="comment"># at 4</span></span><br><span class="line"><span class="comment">#210401 17:02:45 server id 1  end_log_pos 123 CRC32 0xa84b7737 	Start: binlog v 4, server v 5.7.33-log created 210401 17:02:45</span></span><br><span class="line"><span class="comment"># Warning: this binlog is either in use or was not closed properly.</span></span><br><span class="line">BINLOG <span class="string">&#x27;</span></span><br><span class="line"><span class="string">NYxlYA8BAAAAdwAAAHsAAAABAAQANS43LjMzLWxvZwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</span></span><br><span class="line"><span class="string">AAAAAAAAAAAAAAAAAAAAAAAAEzgNAAgAEgAEBAQEEgAAXwAEGggAAAAICAgCAAAACgoKKioAEjQA</span></span><br><span class="line"><span class="string">ATd3S6g=</span></span><br><span class="line"><span class="string">&#x27;</span>/*!*/;</span><br><span class="line"><span class="comment"># at 123</span></span><br><span class="line"><span class="comment">#210401 17:02:45 server id 1  end_log_pos 154 CRC32 0x3d6a0e33 	Previous-GTIDs</span></span><br><span class="line"><span class="comment"># [empty]</span></span><br><span class="line">SET @@SESSION.GTID_NEXT= <span class="string">&#x27;AUTOMATIC&#x27;</span> /* added by mysqlbinlog */ /*!*/;</span><br><span class="line">DELIMITER ;</span><br><span class="line"><span class="comment"># End of log file</span></span><br><span class="line">/*!50003 SET COMPLETION_TYPE=@OLD_COMPLETION_TYPE*/;</span><br><span class="line">/*!50530 SET @@SESSION.PSEUDO_SLAVE_MODE=0*/;</span><br></pre></td></tr></table></figure>
+                <h1 id="模块安装"><a href="#模块安装" class="headerlink" title="模块安装"></a>模块安装</h1><h2 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h2><p>安装flask-session时，出现如下问题</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">pip install flask-session</span><br><span class="line">Looking in indexes: https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">Requirement already satisfied: flask-session in e:\000work\house\lib\site-packages (0.4.0)</span><br><span class="line">Requirement already satisfied: cachelib in e:\000work\house\lib\site-packages (from flask-s</span><br><span class="line">ession) (0.3.0)</span><br><span class="line">Requirement already satisfied: Flask&gt;=0.8 in e:\000work\house\lib\site-packages (from flask</span><br><span class="line">-session) (1.1.4)</span><br><span class="line">Requirement already satisfied: Werkzeug&lt;2.0,&gt;=0.15 in e:\000work\house\lib\site-packages (f</span><br><span class="line">rom Flask&gt;=0.8-&gt;flask-session) (1.0.1)</span><br><span class="line">Requirement already satisfied: click&lt;8.0,&gt;=5.1 in e:\000work\house\lib\site-packages (from</span><br><span class="line">Flask&gt;=0.8-&gt;flask-session) (7.1.2)</span><br><span class="line">Requirement already satisfied: itsdangerous&lt;2.0,&gt;=0.24 in e:\000work\house\lib\site-package</span><br><span class="line">s (from Flask&gt;=0.8-&gt;flask-session) (1.1.0)</span><br><span class="line">Requirement already satisfied: Jinja2&lt;3.0,&gt;=2.10.1 in e:\000work\house\lib\site-packages (f</span><br><span class="line">rom Flask&gt;=0.8-&gt;flask-session) (2.11.3)</span><br><span class="line">Requirement already satisfied: MarkupSafe&gt;=0.23 in e:\000work\house\lib\site-packages (from</span><br><span class="line"> Jinja2&lt;3.0,&gt;=2.10.1-&gt;Flask&gt;=0.8-&gt;flask-session) (2.0.1)</span><br></pre></td></tr></table></figure>
 
-<h5 id="查看位置"><a href="#查看位置" class="headerlink" title="查看位置"></a>查看位置</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@(none) 20:53  mysql&gt;show master status;</span><br><span class="line">+----------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">| File                 | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</span><br><span class="line">+----------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">| localhost-bin.000004 |      154 |              |                  |                   |</span><br><span class="line">+----------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><p>指定安装路径</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install --target=e:\000work\house\lib\site-packages flask-sess</span><br><span class="line">ion</span><br></pre></td></tr></table></figure>
 
-
-
-<h3 id="1-创建完全备份"><a href="#1-创建完全备份" class="headerlink" title="1.创建完全备份"></a>1.创建完全备份</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysqldump -uroot -p&#x27;wp123456&#x27; --databases wp &gt;/backup/wp.sql</span></span><br><span class="line">mysqldump: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</span><br></pre></td></tr></table></figure>
-
-<h3 id="2-模拟数据发生变化"><a href="#2-模拟数据发生变化" class="headerlink" title="2.模拟数据发生变化"></a>2.模拟数据发生变化</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">root@(none) 20:53  mysql&gt;show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema |</span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">| wp                 |</span><br><span class="line">+--------------------+</span><br><span class="line">root@game 21:01  mysql&gt;use wp;</span><br><span class="line">Reading table information <span class="keyword">for</span> completion of table and column names</span><br><span class="line">You can turn off this feature to get a quicker startup with -A</span><br><span class="line"></span><br><span class="line">Database changed</span><br><span class="line">root@wp 21:02  mysql&gt;insert into trans_demo(id,name) values(4,<span class="string">&#x27;lisa&#x27;</span>);</span><br><span class="line">Query OK, 1 row affected (0.53 sec)</span><br><span class="line"></span><br><span class="line">root@wp 21:03  mysql&gt;insert into trans_demo(id,name) values(5,<span class="string">&#x27;jack&#x27;</span>);</span><br><span class="line">Query OK, 1 row affected (0.11 sec)</span><br></pre></td></tr></table></figure>
-
-<h3 id="3-查看位置号"><a href="#3-查看位置号" class="headerlink" title="3.查看位置号"></a>3.查看位置号</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">root@wp 21:03  mysql&gt;show master status;</span><br><span class="line">+----------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">| File                 | Position | Binlog_Do_DB | Binlog_Ignore_DB | Executed_Gtid_Set |</span><br><span class="line">+----------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">| localhost-bin.000004 |      154 |              |                  |                   |</span><br><span class="line">+----------------------+----------+--------------+------------------+-------------------+</span><br><span class="line">1 row <span class="keyword">in</span> <span class="built_in">set</span> (0.09 sec)</span><br></pre></td></tr></table></figure>
-
-<h3 id="4-模拟出现意外，数据库数据丢失"><a href="#4-模拟出现意外，数据库数据丢失" class="headerlink" title="4.模拟出现意外，数据库数据丢失"></a>4.模拟出现意外，数据库数据丢失</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">root@wp 21:05  mysql&gt;drop database wp;</span><br><span class="line">Query OK, 3 rows affected (1.21 sec)</span><br></pre></td></tr></table></figure>
-
-<h5 id="查看数据库，确认库已被删除"><a href="#查看数据库，确认库已被删除" class="headerlink" title="查看数据库，确认库已被删除"></a>查看数据库，确认库已被删除</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">root@(none) 21:06  mysql&gt;show databases;</span><br><span class="line">+--------------------+</span><br><span class="line">| Database           |</span><br><span class="line">+--------------------+</span><br><span class="line">| information_schema | </span><br><span class="line">| mysql              |</span><br><span class="line">| performance_schema |</span><br><span class="line">| sys                |</span><br><span class="line">|                    |</span><br><span class="line">+--------------------+</span><br></pre></td></tr></table></figure>
-
-<h3 id="5-恢复数据"><a href="#5-恢复数据" class="headerlink" title="5.恢复数据"></a>5.恢复数据</h3><ul>
-<li>恢复完全备份</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysql -uroot -p&#x27;wp123456&#x27; &lt;/backup/wp.sql</span></span><br><span class="line">mysql: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</span><br></pre></td></tr></table></figure>
-
-<p>此时的数据还没有完全恢复</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">root@wp 21:38  mysql&gt;select * from trans_demo;</span><br><span class="line">+------+------+</span><br><span class="line">| id   | name |</span><br><span class="line">+------+------+</span><br><span class="line">|    3 | cali |</span><br><span class="line">|    1 | bob  |</span><br><span class="line">|    2 | ROSE |</span><br><span class="line">+------+------+</span><br><span class="line">3 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>二进制日志恢复数据</li>
-</ul>
-<ol>
-<li><p>通过位置点恢复</p>
-<p> 查看二进制日志关于drop数据库的部分</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysqlbinlog localhost-bin.000004|egrep -C 5 &#x27;drop database&#x27;</span></span><br><span class="line"><span class="comment">#210401 21:06:44 server id 1  end_log_pos 749 CRC32 0x4232993e 	Anonymous_GTID	last_committed=2	sequence_number=3	rbr_only=no</span></span><br><span class="line">SET @@SESSION.GTID_NEXT= <span class="string">&#x27;ANONYMOUS&#x27;</span>/*!*/;</span><br><span class="line"><span class="comment"># at 749</span></span><br><span class="line"><span class="comment">#210401 21:06:44 server id 1  end_log_pos 835 CRC32 0x39092363 	Query	thread_id=60	exnec_time=1	error_code=0</span></span><br><span class="line">SET TIMESTAMP=1617282404/*!*/;</span><br><span class="line">drop database wp</span><br><span class="line">/*!*/;</span><br><span class="line"><span class="comment"># at 835</span></span><br><span class="line"><span class="comment">#210401 21:35:54 server id 1  end_log_pos 900 CRC32 0x8ebec48f 	Anonymous_GTID	last_committed=3	sequence_number=4	rbr_only=no</span></span><br><span class="line">SET @@SESSION.GTID_NEXT= <span class="string">&#x27;ANONYMOUS&#x27;</span>/*!*/;</span><br><span class="line"><span class="comment"># at 900</span></span><br></pre></td></tr></table></figure>
-
-<p> 获得drop数据的位置点</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># at 749</span></span><br><span class="line"><span class="comment">#210401 21:06:44 server id 1  end_log_pos 835 CRC32 0x39092363 	Query	thread_id=60	exec_time=1	error_code=0</span></span><br><span class="line">SET TIMESTAMP=1617282404/*!*/;</span><br><span class="line">drop database wp</span><br></pre></td></tr></table></figure>
-
-<p> 位置点为 # at 749</p>
-<p> 恢复</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysqlbinlog --start-position=154 --stop-position=749 localhost-bin.000004 |mysql -uroot -p&#x27;wp123456&#x27;</span></span><br><span class="line">mysql: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</span><br></pre></td></tr></table></figure>
-
-<p> 恢复成功</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@wp 21:49  mysql&gt;select * from trans_demo;</span><br><span class="line">+------+------+</span><br><span class="line">| id   | name |</span><br><span class="line">+------+------+</span><br><span class="line">|    3 | cali |</span><br><span class="line">|    1 | bob  |</span><br><span class="line">|    2 | ROSE |</span><br><span class="line">|    4 | lisa |</span><br><span class="line">|    5 | jack |</span><br><span class="line">+------+------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
-<li><p>通过时间来恢复</p>
-<p> 查看二进制日志关于drop数据库的部分</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysqlbinlog localhost-bin.000004|egrep -C 5 &#x27;drop database&#x27;</span></span><br><span class="line"><span class="comment"># at 31294</span></span><br><span class="line"><span class="comment">#210402 13:01:12 server id 1  end_log_pos 31380 CRC32 0xae8350ad 	Query	thread_id=77	exec_time=0	error_code=0</span></span><br><span class="line">SET TIMESTAMP=1617339672/*!*/;</span><br><span class="line">SET @@session.pseudo_thread_id=77/*!*/;</span><br><span class="line">SET @@session.sql_mode=1436549152/*!*/;</span><br><span class="line">drop database wp</span><br><span class="line">/*!*/;</span><br><span class="line"><span class="comment"># at 31380</span></span><br><span class="line"><span class="comment">#210403 16:20:54 server id 1  end_log_pos 31431 CRC32 0xb277e494 	Rotate to localhost-bin.000005  pos: 4</span></span><br><span class="line">SET @@SESSION.GTID_NEXT= <span class="string">&#x27;AUTOMATIC&#x27;</span> /* added by mysqlbinlog */ /*!*/;</span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>获得drop数据的时间点</li>
-</ul>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#210402 13:01:12</span></span><br></pre></td></tr></table></figure>
-
-<p> 通过时间点恢复</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost mysql]<span class="comment"># mysqlbinlog  --stop-datetime=&#x27;2021-04-02 13:01:12&#x27; localhost-bin.000004|mysql -uroot -p&#x27;wp123456&#x27;</span></span><br><span class="line">mysql: [Warning] Using a password on the <span class="built_in">command</span> line interface can be insecure.</span><br></pre></td></tr></table></figure>
-
-<p> 恢复成功</p>
- <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@wp 16:24  mysql&gt;select * from trans_demo;</span><br><span class="line">+------+------+</span><br><span class="line">| id   | name |</span><br><span class="line">+------+------+</span><br><span class="line">|    3 | cali |</span><br><span class="line">|    1 | bob  |</span><br><span class="line">|    2 | ROSE |</span><br><span class="line">|    4 | lisa |</span><br><span class="line">|    5 | jack |</span><br><span class="line">+------+------+</span><br><span class="line">5 rows <span class="keyword">in</span> <span class="built_in">set</span> (0.00 sec)</span><br></pre></td></tr></table></figure></li>
-</ol>
 
                 
             </div>
@@ -497,7 +443,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wupei-w.github.io/2021/09/20/wan-quan-bei-fen-er-jin-zhi-ri-zhi-bei-fen/">https://wupei-w.github.io/2021/09/20/wan-quan-bei-fen-er-jin-zhi-ri-zhi-bei-fen/</a>
+                    <a href="https://wupei-w.github.io/2021/10/06/ji-python-de-flask-de-er-san-liang-shi/">https://wupei-w.github.io/2021/10/06/ji-python-de-flask-de-er-san-liang-shi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -534,11 +480,7 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/mysql/">
-                                    <span class="chip bg-color">mysql</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -579,17 +521,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/09/20/mysql-ji-yu-gtid-de-zhu-cong-fu-zhi/">
+                <a href="/2021/10/06/ji-python-de-flask-de-er-san-liang-shi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="mysql -基于Gtid的主从复制">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="记python的flask的二三两事">
                         
-                        <span class="card-title">mysql -基于Gtid的主从复制</span>
+                        <span class="card-title">记python的flask的二三两事</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -599,9 +542,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-10-06
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -614,14 +557,7 @@
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>
@@ -632,13 +568,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/19/ru-he-jie-jue-centos8-xia-zai-su-du-man/">
+                <a href="/2021/09/24/linux-xiu-gai-mo-ren-python-ban-ben/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="如何解决centos8下载速度慢">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="linux修改默认python版本">
                         
-                        <span class="card-title">如何解决centos8下载速度慢</span>
+                        <span class="card-title">linux修改默认python版本</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -649,7 +585,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-24
                             </span>
                         <span class="publish-author">
                             
@@ -668,6 +604,14 @@
                     
                     <a href="/tags/linux/">
                         <span class="chip bg-color">linux</span>
+                    </a>
+                    
+                    <a href="/tags/python/">
+                        <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%BD%AF%E9%93%BE%E6%8E%A5%E3%80%81%E7%A1%AC%E9%93%BE%E6%8E%A5/">
+                        <span class="chip bg-color">软链接、硬链接</span>
                     </a>
                     
                 </div>
