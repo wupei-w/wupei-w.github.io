@@ -397,7 +397,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    248
+                    284
                 </div>
                 
 
@@ -426,6 +426,11 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pip install --target=e:\000work\house\lib\site-packages flask-sess</span><br><span class="line">ion</span><br></pre></td></tr></table></figure>
 
 
+
+<h1 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a>CSRF</h1><h2 id="问题-1"><a href="#问题-1" class="headerlink" title="问题"></a>问题</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RuntimeError: A secret key is required to use CSRF.</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>在flask的config里添加secret_key字段</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置密钥，用于csrf_token的加解密</span></span><br><span class="line">SECRET_KEY = <span class="string">&quot;xxxxxxxxxxxxx&quot;</span></span><br></pre></td></tr></table></figure>
 
 
                 
