@@ -401,7 +401,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    144
+                    234
                 </div>
                 
 
@@ -435,6 +435,17 @@
 <p>报错显示文件已有软链接</p>
 <p>这个时候需要使用强制命令进行软链接</p>
 <p><code> ln -sf /usr/bin/python3 python</code></p>
+<h2 id="后续"><a href="#后续" class="headerlink" title="后续"></a>后续</h2><p>将默认的python指定为python3.x之后，yum包管理出现了问题</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  File &quot;/usr/bin/yum&quot;, line 30</span><br><span class="line">    except KeyboardInterrupt, e:</span><br><span class="line">                            ^</span><br><span class="line">SyntaxError: invalid syntax</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="解决-1"><a href="#解决-1" class="headerlink" title="解决"></a>解决</h3><p>修改yum配置文件，指定python解释器为之前的版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vi /usr/bin/yum</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/python2.7</span></span><br></pre></td></tr></table></figure>
+
+<p>修改urlgrabber-ext-down文件，更改python版本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> vi /usr/libexec/urlgrabber-ext-down</span></span><br><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/python2.7</span></span><br></pre></td></tr></table></figure>
+
 
                 
             </div>
