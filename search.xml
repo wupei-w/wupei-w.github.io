@@ -4,6 +4,137 @@
   
     
     <entry>
+      <title>容器如何安装新程序</title>
+      <link href="/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/"/>
+      <url>/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h1><p>想要在容器里查看ip</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: ip: command not found</span><br></pre></td></tr></table></figure><p>想要在容器里编辑文本</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: vim: command not found</span><br></pre></td></tr></table></figure><p>想要在容器里查看占用的端口</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: netstat: command not found</span><br></pre></td></tr></table></figure><p><img src="https://i.loli.net/2021/11/18/FpkEWyIdvlatqD7.png"></p><h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><h3 id="确认系统版本"><a href="#确认系统版本" class="headerlink" title="确认系统版本"></a>确认系统版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /etc/os-release |grep NAME</span></span><br><span class="line">NAME=&quot;CentOS Linux&quot;</span><br><span class="line">PRETTY_NAME=&quot;CentOS Linux 7 (Core)&quot;</span><br><span class="line">CPE_NAME=&quot;cpe:/o:centos:centos:7&quot;</span><br></pre></td></tr></table></figure><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul><li><p>Redhat系统</p><p><code>yum</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vim</span><br></pre></td></tr></table></figure></li><li><p>Ubuntu系统</p><p><code>apt-get</code></p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install vim </span><br></pre></td></tr></table></figure></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 容器 </tag>
+            
+            <tag> docker </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>nsenter命令</title>
+      <link href="/2021/11/18/nsenter-ming-ling/"/>
+      <url>/2021/11/18/nsenter-ming-ling/</url>
+      
+        <content type="html"><![CDATA[<h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p><code>bash: nestat: command not found</code></p><p>因为docker镜像都是轻量级安装，所以减少了很多自带的命令，除开下载需要的命令，还有一种方式可以达到想要的效果</p><h1 id="nsenter-namespace-enter"><a href="#nsenter-namespace-enter" class="headerlink" title="nsenter(namespace enter)"></a>nsenter(namespace enter)</h1><p>作用：</p><h2 id="SYNOPSIS"><a href="#SYNOPSIS" class="headerlink" title="SYNOPSIS"></a>SYNOPSIS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nsenter [options] [program [arguments]]</span><br></pre></td></tr></table></figure><h2 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">-t, --target pid</span><br><span class="line">              指定要从中获取上下文的目标流程  The paths to the contexts specified by pid are:</span><br><span class="line"></span><br><span class="line">              /proc/pid/ns/mnt    the mount namespace</span><br><span class="line">              /proc/pid/ns/uts    the UTS namespace</span><br><span class="line">              /proc/pid/ns/ipc    the IPC namespace</span><br><span class="line">              /proc/pid/ns/net    the network namespace</span><br><span class="line">              /proc/pid/ns/pid    the PID namespace</span><br><span class="line">              /proc/pid/ns/user   the user namespace</span><br><span class="line">              /proc/pid/root      the root directory</span><br><span class="line">              /proc/pid/cwd       the working directory respectively</span><br><span class="line"></span><br><span class="line">       -m, --mount[=file]</span><br><span class="line">              进入mount namespace，如果未指定文件，请输入目标mount的挂载namespace。如果指定file，则输入file指定的mount namespace</span><br><span class="line"></span><br><span class="line">       -u, --uts[=file]</span><br><span class="line">              进入UTS namespace，如果没有指定文件，则输入目标进程的UTS namespace。如果指定了file，则输入由fil指定的UTS namespace</span><br><span class="line"></span><br><span class="line">       -i, --ipc[=file]</span><br><span class="line">              进入ipc namespace，如果未指定文件，则输入目标进程的IPC命名空间。如果指定了file，则输入file指定的IPC命名空间。 </span><br><span class="line"></span><br><span class="line">       -n, --net[=file]</span><br><span class="line">              进入net namespace，如果未指定文件，请输入目标进程的网络名称空间。如果指定file，则输入指定的网络命名空间</span><br><span class="line"></span><br><span class="line">       -p, --pid[=file]</span><br><span class="line">              进入PID namespace，如果未指定文件，输入目标进程的PID命名空间。如果指定file，则输入file指定的PID命名空间</span><br><span class="line"></span><br><span class="line">       -U, --user[=file]</span><br><span class="line">              进入user  namespace，如果未指定文件，请输入目标进程的用户名称空间。如果指定file，则输入file指定的user namespace  </span><br><span class="line"></span><br><span class="line">       -G, --setgid gid</span><br><span class="line">              设置将在输入的名称空间中使用的组ID，并删除补充组。nsenter(1)总是为用户命名空间设置GID，默认为0。</span><br><span class="line"></span><br><span class="line">       -S, --setuid uid</span><br><span class="line">              设置将在输入的名称空间中使用的用户ID。nsenter(1)总是为用户命名空间设置UID，默认为0。</span><br><span class="line"></span><br><span class="line">       --preserve-credentials</span><br><span class="line">              输入用户名称空间时，不要修改UID和GID。默认是删除补充组，并将GID和UID设置为0</span><br><span class="line"></span><br><span class="line">       -r, --root[=directory]</span><br><span class="line">              设置根目录。如果不指定目录，则根目录设置为目标进程的根目录。如果指定了directory，则将根目录设置为指定目录。</span><br><span class="line"></span><br><span class="line">       -w, --wd[=directory]</span><br><span class="line">              设置工作目录。如果未指定目录，请将工作目录设置为目标进程的工作目录。如果指定目录，将工作目录设置为指定目录。</span><br><span class="line"></span><br><span class="line">       -F, --no-fork</span><br><span class="line">              在执行指定程序之前不要fork。默认情况下，当输入一个PID命名空间时，nsenter在调用<span class="built_in">exec</span>之前调用fork，这样所有的子命名空间也将在新输入的PID命名空间中。</span><br><span class="line"></span><br><span class="line">       -Z, --follow-context</span><br><span class="line">              根据——target PID指定的已经运行的进程，设置用于执行新进程的SELinux安全上下文。(必须使用SELinux支持编译util-linux，否则该选项不可用。)</span><br><span class="line"></span><br><span class="line">       -V, --version</span><br><span class="line">              显示版本信息</span><br></pre></td></tr></table></figure><h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="获取容器id"><a href="#获取容器id" class="headerlink" title="获取容器id"></a>获取容器id</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker inspect -f &#123;&#123;.State.Pid&#125;&#125; container-name</span></span><br></pre></td></tr></table></figure><p>举个栗子</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker inspect -f &#123;&#123;.State.Pid&#125;&#125; nginx-test</span></span><br><span class="line">1139388</span><br></pre></td></tr></table></figure><h3 id="使用nsenter进入容器所在的namespace"><a href="#使用nsenter进入容器所在的namespace" class="headerlink" title="使用nsenter进入容器所在的namespace"></a>使用nsenter进入容器所在的namespace</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nsenter -n -t 1139388</span></span><br><span class="line"><span class="comment"># ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: tunl0@NONE: &lt;NOARP&gt; mtu 1480 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/ipip 0.0.0.0 brd 0.0.0.0</span><br><span class="line">864: eth0@if865: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default </span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure><p>进入成功</p><h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># netstat -anplt</span><br><span class="line">Active Internet connections (servers and established)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1139388/nginx: mast </span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      1139388/nginx: mast </span><br></pre></td></tr></table></figure><h3 id="退出namespace"><a href="#退出namespace" class="headerlink" title="退出namespace"></a>退出namespace</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># exit</span><br><span class="line">logout</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+            <tag> 容器 </tag>
+            
+            <tag> 网络 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>shell脚本，if语句的options</title>
+      <link href="/2021/11/16/shell-jiao-ben-if-yu-ju-de-options/"/>
+      <url>/2021/11/16/shell-jiao-ben-if-yu-ju-de-options/</url>
+      
+        <content type="html"><![CDATA[<h1 id="被小破站面试官问到的问题"><a href="#被小破站面试官问到的问题" class="headerlink" title="被小破站面试官问到的问题"></a>被小破站面试官问到的问题</h1><p>Q: 如何判断一个文件是否存在</p><p>A: find</p><p>Q: 如何判断一个文件夹是否存在呢</p><p>A: find</p><p>Q: 你觉得他们有区别吗</p><p>A: 有</p><p>Q: 那你的答案还是find吗</p><p>A: o((⊙﹏⊙))o</p><h2 id="if-判断才是王道"><a href="#if-判断才是王道" class="headerlink" title="if 判断才是王道"></a>if 判断才是王道</h2><h1 id="if-的一些参数"><a href="#if-的一些参数" class="headerlink" title="if 的一些参数"></a>if 的一些参数</h1><p><code>if [ -a file ]</code> 如果file存在则为</p><p><code>if [ -b file ]</code> 如果file存在且为块（block）文件则为真</p><p><code>if [ -c file ]</code>  如果file存在且为字符（character）文件则为真</p><p><code>if [ -d path ]</code> 如果path存在且为一个目录是则为真</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>容器里设置支持中文环境</title>
+      <link href="/2021/11/09/linux-zhi-chi-zhong-wen-huan-jing/"/>
+      <url>/2021/11/09/linux-zhi-chi-zhong-wen-huan-jing/</url>
+      
+        <content type="html"><![CDATA[<h1 id="request"><a href="#request" class="headerlink" title="request"></a>request</h1><p>要求在容器里使用英文语言时，支持中文解码，不会出现中文乱码的情况</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkdir 测试</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls</span></span><br><span class="line">Users              bin  etc   lib    media  opt   root  sbin  sys  usr  ??????</span><br><span class="line">anaconda-post.log  dev  home  lib64  mnt    proc  run   srv   tmp  var</span><br></pre></td></tr></table></figure><h1 id="solve"><a href="#solve" class="headerlink" title="solve"></a>solve</h1><h2 id="检查当前系统语言环境"><a href="#检查当前系统语言环境" class="headerlink" title="检查当前系统语言环境"></a>检查当前系统语言环境</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale </span><br></pre></td></tr></table></figure><h2 id="查看当前语言环境是否有中文语言包"><a href="#查看当前语言环境是否有中文语言包" class="headerlink" title="查看当前语言环境是否有中文语言包"></a>查看当前语言环境是否有中文语言包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">locale -a|grep zh_CN</span><br></pre></td></tr></table></figure><h2 id="下载中文语言包"><a href="#下载中文语言包" class="headerlink" title="下载中文语言包"></a>下载中文语言包</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 安装中文包</span></span><br><span class="line">yum install -y kde-l10n-Chinese </span><br><span class="line"><span class="meta">#</span><span class="bash"> 重新安装glibc-common</span></span><br><span class="line">yum -y reinstall glibc-common </span><br><span class="line"><span class="meta">#</span><span class="bash"> 编译生成语言库</span></span><br><span class="line">localedef -c -f UTF-8 -i zh_CN zh_CN.utf8</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> locale -a|grep zh_CN</span></span><br><span class="line">zh_CN.utf8</span><br></pre></td></tr></table></figure><h2 id="修改系统语言环境"><a href="#修改系统语言环境" class="headerlink" title="修改系统语言环境"></a>修改系统语言环境</h2><h3 id="临时修改"><a href="#临时修改" class="headerlink" title="临时修改"></a>临时修改</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LANG=zh_CN.UTF-8</span><br></pre></td></tr></table></figure><h4 id="永久修改"><a href="#永久修改" class="headerlink" title="永久修改"></a>永久修改</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &#x27;LANG=zh_CN.UTF-8&#x27; &gt;&gt; /etc/locale.conf</span><br><span class="line">echo &#x27;export LANG=&quot;zh_CN.UTF-8&quot;&#x27; &gt; /root/.bashrc</span><br><span class="line">source /root/.bashrc</span><br></pre></td></tr></table></figure><h1 id="check"><a href="#check" class="headerlink" title="check"></a>check</h1><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> locale</span></span><br><span class="line">LANG=en_US.utf-8</span><br><span class="line">LC_CTYPE=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_NUMERIC=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_TIME=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_COLLATE=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_MONETARY=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_MESSAGES=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_PAPER=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_NAME=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_ADDRESS=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_TELEPHONE=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_MEASUREMENT=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_IDENTIFICATION=&quot;en_US.utf-8&quot;</span><br><span class="line">LC_ALL=</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> mkdir 测试</span></span><br><span class="line"><span class="meta">#</span><span class="bash"> ls</span></span><br><span class="line">anaconda-post.log  bindev  etc  homelib  lib64  media  mntopt  proc  root  run  sbin  srv  sys  tmp  usrvar  测试</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>error certificate</title>
+      <link href="/2021/10/26/error-certificate/"/>
+      <url>/2021/10/26/error-certificate/</url>
+      
+        <content type="html"><![CDATA[<h1 id="issue"><a href="#issue" class="headerlink" title="issue"></a>issue</h1><p><code>curl: (77) error setting certificate verify locations:  CAfile: /etc/ssl/certs/ca-certificates.crt CApath: none </code></p><h1 id="result"><a href="#result" class="headerlink" title="result"></a>result</h1><p>/etc/ssl/certs/路径下找不到ca-certificates.crt证书</p><h1 id="fix"><a href="#fix" class="headerlink" title="fix"></a>fix</h1><p><code>cp /etc/pki/tls/certs/ca-bundle.crt /etc/ssl/certs/ca-certificates.crt  </code></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> linux </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>记python的flask的二三两事</title>
       <link href="/2021/10/06/ji-python-de-flask-de-er-san-liang-shi/"/>
       <url>/2021/10/06/ji-python-de-flask-de-er-san-liang-shi/</url>

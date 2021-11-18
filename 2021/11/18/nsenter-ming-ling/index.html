@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="mysql二进制安装, Vivant&#39;s Blog">
+    <meta name="keywords" content="nsenter命令, Vivant&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>mysql二进制安装 | Vivant&#39;s Blog</title>
+    <title>nsenter命令 | Vivant&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">mysql二进制安装</h1>
+                    <h1 class="description center-align post-title">nsenter命令</h1>
                 </div>
             </div>
         </div>
@@ -324,8 +324,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/mysql/">
-                                <span class="chip bg-color">mysql</span>
+                            <a href="/tags/linux/">
+                                <span class="chip bg-color">linux</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                                <span class="chip bg-color">容器</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                                <span class="chip bg-color">网络</span>
                             </a>
                         
                     </div>
@@ -336,8 +344,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
-                                学习笔记
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                学习
                             </a>
                         
                     </div>
@@ -353,14 +361,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    685
+                    960
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -375,92 +383,25 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>官方文档</p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.7/en/binary-installation.html">https://dev.mysql.com/doc/refman/5.7/en/binary-installation.html</a></p>
-<h4 id="0-解决软件依赖关系"><a href="#0-解决软件依赖关系" class="headerlink" title="0.解决软件依赖关系"></a>0.解决软件依赖关系</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install cmake ncurses<span class="literal">-devel</span>  ncurses<span class="literal">-compat</span> gcc gcc<span class="literal">-c</span>++ vim lsof bzip2 openssl<span class="literal">-devel</span> <span class="literal">-y</span></span><br></pre></td></tr></table></figure>
+                <h1 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h1><p><code>bash: nestat: command not found</code></p>
+<p>因为docker镜像都是轻量级安装，所以减少了很多自带的命令，除开下载需要的命令，还有一种方式可以达到想要的效果</p>
+<h1 id="nsenter-namespace-enter"><a href="#nsenter-namespace-enter" class="headerlink" title="nsenter(namespace enter)"></a>nsenter(namespace enter)</h1><p>作用：</p>
+<h2 id="SYNOPSIS"><a href="#SYNOPSIS" class="headerlink" title="SYNOPSIS"></a>SYNOPSIS</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nsenter [options] [program [arguments]]</span><br></pre></td></tr></table></figure>
 
-<h4 id="1-解压mysql二进制安装文件"><a href="#1-解压mysql二进制安装文件" class="headerlink" title="1.解压mysql二进制安装文件"></a>1.解压mysql二进制安装文件</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> ~]<span class="comment"># tar xf mysql-5.7.33-linux-glibc2.12-x86_64.tar.gz</span></span><br></pre></td></tr></table></figure>
+<h2 id="OPTIONS"><a href="#OPTIONS" class="headerlink" title="OPTIONS"></a>OPTIONS</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line">-t, --target pid</span><br><span class="line">              指定要从中获取上下文的目标流程  The paths to the contexts specified by pid are:</span><br><span class="line"></span><br><span class="line">              /proc/pid/ns/mnt    the mount namespace</span><br><span class="line">              /proc/pid/ns/uts    the UTS namespace</span><br><span class="line">              /proc/pid/ns/ipc    the IPC namespace</span><br><span class="line">              /proc/pid/ns/net    the network namespace</span><br><span class="line">              /proc/pid/ns/pid    the PID namespace</span><br><span class="line">              /proc/pid/ns/user   the user namespace</span><br><span class="line">              /proc/pid/root      the root directory</span><br><span class="line">              /proc/pid/cwd       the working directory respectively</span><br><span class="line"></span><br><span class="line">       -m, --mount[=file]</span><br><span class="line">              进入mount namespace，如果未指定文件，请输入目标mount的挂载namespace。如果指定file，则输入file指定的mount namespace</span><br><span class="line"></span><br><span class="line">       -u, --uts[=file]</span><br><span class="line">              进入UTS namespace，如果没有指定文件，则输入目标进程的UTS namespace。如果指定了file，则输入由fil指定的UTS namespace</span><br><span class="line"></span><br><span class="line">       -i, --ipc[=file]</span><br><span class="line">              进入ipc namespace，如果未指定文件，则输入目标进程的IPC命名空间。如果指定了file，则输入file指定的IPC命名空间。 </span><br><span class="line"></span><br><span class="line">       -n, --net[=file]</span><br><span class="line">              进入net namespace，如果未指定文件，请输入目标进程的网络名称空间。如果指定file，则输入指定的网络命名空间</span><br><span class="line"></span><br><span class="line">       -p, --pid[=file]</span><br><span class="line">              进入PID namespace，如果未指定文件，输入目标进程的PID命名空间。如果指定file，则输入file指定的PID命名空间</span><br><span class="line"></span><br><span class="line">       -U, --user[=file]</span><br><span class="line">              进入user  namespace，如果未指定文件，请输入目标进程的用户名称空间。如果指定file，则输入file指定的user namespace  </span><br><span class="line"></span><br><span class="line">       -G, --setgid gid</span><br><span class="line">              设置将在输入的名称空间中使用的组ID，并删除补充组。nsenter(1)总是为用户命名空间设置GID，默认为0。</span><br><span class="line"></span><br><span class="line">       -S, --setuid uid</span><br><span class="line">              设置将在输入的名称空间中使用的用户ID。nsenter(1)总是为用户命名空间设置UID，默认为0。</span><br><span class="line"></span><br><span class="line">       --preserve-credentials</span><br><span class="line">              输入用户名称空间时，不要修改UID和GID。默认是删除补充组，并将GID和UID设置为0</span><br><span class="line"></span><br><span class="line">       -r, --root[=directory]</span><br><span class="line">              设置根目录。如果不指定目录，则根目录设置为目标进程的根目录。如果指定了directory，则将根目录设置为指定目录。</span><br><span class="line"></span><br><span class="line">       -w, --wd[=directory]</span><br><span class="line">              设置工作目录。如果未指定目录，请将工作目录设置为目标进程的工作目录。如果指定目录，将工作目录设置为指定目录。</span><br><span class="line"></span><br><span class="line">       -F, --no-fork</span><br><span class="line">              在执行指定程序之前不要fork。默认情况下，当输入一个PID命名空间时，nsenter在调用<span class="built_in">exec</span>之前调用fork，这样所有的子命名空间也将在新输入的PID命名空间中。</span><br><span class="line"></span><br><span class="line">       -Z, --follow-context</span><br><span class="line">              根据——target PID指定的已经运行的进程，设置用于执行新进程的SELinux安全上下文。(必须使用SELinux支持编译util-linux，否则该选项不可用。)</span><br><span class="line"></span><br><span class="line">       -V, --version</span><br><span class="line">              显示版本信息</span><br></pre></td></tr></table></figure>
 
-<h4 id="2-将解压包转移到-usr-local-mysql，并改名为mysql"><a href="#2-将解压包转移到-usr-local-mysql，并改名为mysql" class="headerlink" title="2.将解压包转移到/usr/local/mysql，并改名为mysql"></a>2.将解压包转移到/usr/local/mysql，并改名为mysql</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mv</span> mysql<span class="literal">-5</span>.<span class="number">7.33</span><span class="literal">-linux</span><span class="literal">-glibc2</span>.<span class="number">12</span><span class="literal">-x86_64</span> /usr/local/mysql</span><br></pre></td></tr></table></figure>
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><h3 id="获取容器id"><a href="#获取容器id" class="headerlink" title="获取容器id"></a>获取容器id</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker inspect -f &#123;&#123;.State.Pid&#125;&#125; container-name</span></span><br></pre></td></tr></table></figure>
 
-<h4 id="3-新建组mysql"><a href="#3-新建组mysql" class="headerlink" title="3.新建组mysql"></a>3.新建组mysql</h4><figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupadd mysql</span><br></pre></td></tr></table></figure>
+<p>举个栗子</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># docker inspect -f &#123;&#123;.State.Pid&#125;&#125; nginx-test</span></span><br><span class="line">1139388</span><br></pre></td></tr></table></figure>
 
-<p>4.新建用户</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">useradd <span class="literal">-r</span> <span class="literal">-g</span> mysql <span class="literal">-s</span> /bin/false mysql</span><br></pre></td></tr></table></figure>
+<h3 id="使用nsenter进入容器所在的namespace"><a href="#使用nsenter进入容器所在的namespace" class="headerlink" title="使用nsenter进入容器所在的namespace"></a>使用nsenter进入容器所在的namespace</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># nsenter -n -t 1139388</span></span><br><span class="line"><span class="comment"># ip a</span></span><br><span class="line">1: lo: &lt;LOOPBACK,UP,LOWER_UP&gt; mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000</span><br><span class="line">    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00</span><br><span class="line">    inet 127.0.0.1/8 scope host lo</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br><span class="line">2: tunl0@NONE: &lt;NOARP&gt; mtu 1480 qdisc noop state DOWN group default qlen 1000</span><br><span class="line">    link/ipip 0.0.0.0 brd 0.0.0.0</span><br><span class="line">864: eth0@if865: &lt;BROADCAST,MULTICAST,UP,LOWER_UP&gt; mtu 1500 qdisc noqueue state UP group default </span><br><span class="line">    link/ether 02:42:ac:11:00:03 brd ff:ff:ff:ff:ff:ff link-netnsid 0</span><br><span class="line">    inet 172.17.0.3/16 brd 172.17.255.255 scope global eth0</span><br><span class="line">       valid_lft forever preferred_lft forever</span><br></pre></td></tr></table></figure>
 
-<p>-g 指定组</p>
-<p>-s 限制该用户只能登录mysql，不能远程连接</p>
-<p>5.关闭防火墙</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 临时关闭防火墙</span></span><br><span class="line">service firewalld stop</span><br><span class="line"><span class="comment"># 永久关闭防火墙</span></span><br><span class="line">systemctl disable firewalld</span><br></pre></td></tr></table></figure>
+<p>进入成功</p>
+<h3 id="解决问题"><a href="#解决问题" class="headerlink" title="解决问题"></a>解决问题</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># netstat -anplt</span><br><span class="line">Active Internet connections (servers and established)</span><br><span class="line">Proto Recv-Q Send-Q Local Address           Foreign Address         State       PID/Program name    </span><br><span class="line">tcp        0      0 0.0.0.0:80              0.0.0.0:*               LISTEN      1139388/nginx: mast </span><br><span class="line">tcp6       0      0 :::80                   :::*                    LISTEN      1139388/nginx: mast </span><br></pre></td></tr></table></figure>
 
-<p>6.关闭selinux</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 临时关闭</span></span><br><span class="line">setenforce <span class="number">0</span></span><br><span class="line"><span class="comment"># 永久关闭</span></span><br><span class="line">sed <span class="literal">-i</span> <span class="string">&#x27;/^SELINUX=/ s/enforcing/disabled/&#x27;</span> /etc/selinux/config</span><br></pre></td></tr></table></figure>
+<h3 id="退出namespace"><a href="#退出namespace" class="headerlink" title="退出namespace"></a>退出namespace</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># exit</span><br><span class="line">logout</span><br></pre></td></tr></table></figure>
 
-<p>7.新建存储数据的目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">mysql</span>]<span class="comment"># mkdir /data/mysql -p</span></span><br></pre></td></tr></table></figure>
-
-<pre><code>-p 如果没有这个目录，则建立新建此目录
-</code></pre>
-<p>8.修改目录的权限为mysql用户和mysql组所有，只允许mysql用户进行读写</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">mysql</span>]<span class="comment"># chown mysql:mysql /data/mysql/</span></span><br></pre></td></tr></table></figure>
-
-<p>9.更改权限为只有mysql用户和mysql组能访问</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">mysql</span>]<span class="comment"># chmod 750 /data/mysql/</span></span><br></pre></td></tr></table></figure>
-
-<p>进入指定目录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/local/mysql/bin</span><br></pre></td></tr></table></figure>
-
-<p>10.初始化</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">bin</span>]<span class="comment"># ./mysqld  --initialize --user=mysql --basedir=/usr/local/mysql/  --datadir=/data/mysql</span></span><br></pre></td></tr></table></figure>
-
-<p>注意最后一行 - - - 初始密码</p>
-<p>2021-03-19T08:07:41.690712Z 1 [Note] A temporary password is generated for root@localhost: uE*xBD,ru0y&gt;</p>
-<p>11.增加安全性 ，让mysql支持ssl方式登录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">mysql</span>]<span class="comment"># ./mysql_ssl_rsa_setup --datadir=/data/mysql/</span></span><br></pre></td></tr></table></figure>
-
-<p>12.获得临时密码</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">mysql</span>]<span class="comment"># cp support-files/mysql.server /etc/init.d/mysqld</span></span><br></pre></td></tr></table></figure>
-
-<p>13.设置环境变量</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 临时修改</span></span><br><span class="line">export PATH=/usr/local/mysql/bin/:<span class="variable">$PATH</span></span><br><span class="line"><span class="comment"># 开机自动修改</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;PATH=/usr/local/mysql/bin/:$PATH&#x27;</span> &gt;&gt;/root/.bashrc</span><br></pre></td></tr></table></figure>
-
-<p>14.复制support-files里的mysql.server 到 /etc/init.d的目录下叫mysqld</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="type">root</span>@<span class="type">localhost</span> <span class="type">mysql</span>]<span class="comment"># cp ../support-files/mysql.server /etc/init.d/mysqld</span></span><br></pre></td></tr></table></figure>
-
-
-
-<p>15.复制mysql的启动脚本到/etc/init.d目录下</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cp</span> ../support<span class="literal">-files</span>/mysql.server /etc/init.d/mysqld</span><br><span class="line">sed <span class="literal">-i</span> <span class="string">&#x27;66,73 s/mysql/mysql/&#x27;</span> /etc/init.d/mysqld</span><br><span class="line">sed <span class="literal">-i</span> <span class="string">&#x27;70c datadir=/data/mysql&#x27;</span> /etc/init.d/mysqld</span><br></pre></td></tr></table></figure>
-
-<p>16.生成/etc/my.cnf配置文件</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#生成/etc/my.cnf配置文件</span></span><br><span class="line"><span class="built_in">cat</span>  &gt;/etc/my.cnf  &lt;&lt;EOF</span><br><span class="line">[<span class="type">mysqld_safe</span>]</span><br><span class="line"></span><br><span class="line">[<span class="type">client</span>]</span><br><span class="line">socket=/<span class="keyword">data</span>/mysql/mysql.sock</span><br><span class="line"></span><br><span class="line">[<span class="type">mysqld</span>]</span><br><span class="line">socket=/<span class="keyword">data</span>/mysql/mysql.sock</span><br><span class="line">port = <span class="number">3306</span></span><br><span class="line">open_files_limit = <span class="number">8192</span></span><br><span class="line">innodb_buffer_pool_size = <span class="number">512</span>M</span><br><span class="line">character<span class="literal">-set</span><span class="literal">-server</span>=utf8</span><br><span class="line"></span><br><span class="line">[<span class="type">mysql</span>]</span><br><span class="line">auto<span class="literal">-rehash</span></span><br><span class="line">prompt=\\u<span class="selector-tag">@</span>\\d \\R:\\m  mysql&gt;</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
-
-<p>17.启动mysqld进程</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld <span class="built_in">start</span></span><br></pre></td></tr></table></figure>
-
-<p>18.设置开机启动 - - -将mysql添加到linux系统服务管理名单里</p>
-<p>①</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/chkconfig -<span class="literal">-add</span> mysqld</span><br></pre></td></tr></table></figure>
-
-<p>②</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/sbin/chkconfig mysqld on</span><br></pre></td></tr></table></figure>
-
-<p>19.登录</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="literal">-uroot</span> <span class="literal">-p</span><span class="string">&#x27;password&#x27;</span></span><br></pre></td></tr></table></figure>
-
-<p> 指定用户root 登录密码 password</p>
-<p>20.修改初始密码</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql <span class="literal">-uroot</span> <span class="literal">-p</span><span class="string">&#x27;$tme&#x27;</span> -<span class="literal">-connect</span><span class="literal">-expired</span><span class="literal">-password</span> <span class="literal">-e</span> <span class="string">&quot;set password=&#x27;修改的密码&#x27;;&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>初次修改密码需要使用–connect-expired-password</p>
-<p>-e 执行命令</p>
-<ul>
-<li>验证密码是否设置成功</li>
-</ul>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">msyql <span class="literal">-uroot</span> <span class="literal">-p</span>密码 <span class="literal">-e</span> <span class="string">&#x27;show databases;&#x27;</span> </span><br></pre></td></tr></table></figure>
-
-<pre><code>有输出则成功
-</code></pre>
 
                 
             </div>
@@ -487,7 +428,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wupei-w.github.io/2021/09/21/mysql-er-jin-zhi-an-zhuang/">https://wupei-w.github.io/2021/09/21/mysql-er-jin-zhi-an-zhuang/</a>
+                    <a href="https://wupei-w.github.io/2021/11/18/nsenter-ming-ling/">https://wupei-w.github.io/2021/11/18/nsenter-ming-ling/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -525,8 +466,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/mysql/">
-                                    <span class="chip bg-color">mysql</span>
+                                <a href="/tags/linux/">
+                                    <span class="chip bg-color">linux</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                                    <span class="chip bg-color">容器</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BD%91%E7%BB%9C/">
+                                    <span class="chip bg-color">网络</span>
                                 </a>
                             
                         </div>
@@ -573,13 +522,13 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2021/09/21/ji-yu-k8s-de-nginx-shuang-vip-gao-ke-yong-ji-qun/">
+                <a href="/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="基于k8s的nginx双VIP高可用集群">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="容器如何安装新程序">
                         
-                        <span class="card-title">基于k8s的nginx双VIP高可用集群</span>
+                        <span class="card-title">容器如何安装新程序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -590,12 +539,16 @@
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-09-21
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-18
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            w
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
+                                </a>
+                            
                             
                         </span>
                     </div>
@@ -603,16 +556,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/k8s/">
-                        <span class="chip bg-color">k8s</span>
+                    <a href="/tags/%E5%AE%B9%E5%99%A8/">
+                        <span class="chip bg-color">容器</span>
                     </a>
                     
-                    <a href="/tags/nginx/">
-                        <span class="chip bg-color">nginx</span>
-                    </a>
-                    
-                    <a href="/tags/ansible/">
-                        <span class="chip bg-color">ansible</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>
@@ -626,13 +575,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/09/20/mysql-ji-yu-gtid-de-zhu-cong-fu-zhi/">
+                <a href="/2021/11/16/shell-jiao-ben-if-yu-ju-de-options/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="mysql -基于Gtid的主从复制">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="shell脚本，if语句的options">
                         
-                        <span class="card-title">mysql -基于Gtid的主从复制</span>
+                        <span class="card-title">shell脚本，if语句的options</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -643,7 +592,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-09-20
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-16
                             </span>
                         <span class="publish-author">
                             
@@ -660,8 +609,8 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/linux/">
+                        <span class="chip bg-color">linux</span>
                     </a>
                     
                 </div>
