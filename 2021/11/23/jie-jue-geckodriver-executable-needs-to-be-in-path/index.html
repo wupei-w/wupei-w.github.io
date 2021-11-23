@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="容器如何安装新程序, Vivant&#39;s Blog">
+    <meta name="keywords" content="解决 selenium &#39;geckodriver&#39; executable needs to be in PATH., Vivant&#39;s Blog">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>容器如何安装新程序 | Vivant&#39;s Blog</title>
+    <title>解决 selenium &#39;geckodriver&#39; executable needs to be in PATH. | Vivant&#39;s Blog</title>
     <link rel="icon" type="image/png" href="/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -203,12 +203,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/2.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">容器如何安装新程序</h1>
+                    <h1 class="description center-align post-title">解决 selenium &#39;geckodriver&#39; executable needs to be in PATH.</h1>
                 </div>
             </div>
         </div>
@@ -324,12 +324,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                                <span class="chip bg-color">容器</span>
+                            <a href="/tags/python/">
+                                <span class="chip bg-color">python</span>
                             </a>
                         
-                            <a href="/tags/docker/">
-                                <span class="chip bg-color">docker</span>
+                            <a href="/tags/selenium/">
+                                <span class="chip bg-color">selenium</span>
                             </a>
                         
                     </div>
@@ -357,7 +357,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    99
+                    169
                 </div>
                 
 
@@ -379,26 +379,31 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="Q"><a href="#Q" class="headerlink" title="Q"></a>Q</h1><p>想要在容器里查看ip</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: ip: command not found</span><br></pre></td></tr></table></figure>
-
-<p>想要在容器里编辑文本</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: vim: command not found</span><br></pre></td></tr></table></figure>
-
-<p>想要在容器里查看占用的端口</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash: netstat: command not found</span><br></pre></td></tr></table></figure>
-
-<p><img src="https://i.loli.net/2021/11/18/FpkEWyIdvlatqD7.png"></p>
-<h1 id="A"><a href="#A" class="headerlink" title="A"></a>A</h1><h3 id="确认系统版本"><a href="#确认系统版本" class="headerlink" title="确认系统版本"></a>确认系统版本</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> cat /etc/os-release |grep NAME</span></span><br><span class="line">NAME=&quot;CentOS Linux&quot;</span><br><span class="line">PRETTY_NAME=&quot;CentOS Linux 7 (Core)&quot;</span><br><span class="line">CPE_NAME=&quot;cpe:/o:centos:centos:7&quot;</span><br></pre></td></tr></table></figure>
-
-<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><ul>
-<li><p>Redhat系统</p>
-<p><code>yum</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install vim</span><br></pre></td></tr></table></figure></li>
-<li><p>Ubuntu系统</p>
-<p><code>apt-get</code></p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get install vim </span><br></pre></td></tr></table></figure></li>
+                <h1 id="issue"><a href="#issue" class="headerlink" title="issue"></a>issue</h1><p>早闻selenium自动化的大名，就想折腾一下，然后刚开始就进坑里了</p>
+<p><code>selenium.common.exceptions.WebDriverException: Message: &#39;geckodriver&#39; executable needs to be in PATH. </code></p>
+<h1 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h1><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>win10 + Python 3.9.6 + selenium 3.141.0</p>
+<h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>​    缺少geckodriver的驱动</p>
+<h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p><a target="_blank" rel="noopener" href="https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/#firefox">https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/#firefox</a></p>
+<p>从 Selenium 3 开始，Mozilla 已经使用 geckodriver 接管了 Firefox 驱动程序的实现</p>
+<ul>
+<li><p>下载驱动</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/mozilla/geckodriver/releases/tag/v0.30.0">https://github.com/mozilla/geckodriver/releases/tag/v0.30.0</a></p>
+<p><img src="https://i.loli.net/2021/11/23/TiR7ne1lsh6yujH.png"></p>
+</li>
 </ul>
+<p>​        根据自己的需求下载对应的版本</p>
+<ul>
+<li><p>添加驱动到python安装目录</p>
+<p>获取Python的安装目录</p>
+<p>设置-》高级系统设置-》高级-》环境变量-》编辑</p>
+<p><img src="https://i.loli.net/2021/11/23/T3aMxw6XUJFWb5q.png"></p>
+</li>
+</ul>
+<p><img src="https://i.loli.net/2021/11/23/hnUaymBOlLYbwCA.png"></p>
+<p><img src="https://i.loli.net/2021/11/23/gFBPDrA3M7hYmqU.png"></p>
+<p>将驱动复制到此路径下，重启pycharm</p>
+<p><code>运行脚本</code></p>
+<p><img src="https://i.loli.net/2021/11/23/KHLmDaTJiGUhzPp.png"></p>
 
                 
             </div>
@@ -425,7 +430,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://wupei-w.github.io/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/">https://wupei-w.github.io/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/</a>
+                    <a href="https://wupei-w.github.io/2021/11/23/jie-jue-geckodriver-executable-needs-to-be-in-path/">https://wupei-w.github.io/2021/11/23/jie-jue-geckodriver-executable-needs-to-be-in-path/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -463,12 +468,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%B9%E5%99%A8/">
-                                    <span class="chip bg-color">容器</span>
+                                <a href="/tags/python/">
+                                    <span class="chip bg-color">python</span>
                                 </a>
                             
-                                <a href="/tags/docker/">
-                                    <span class="chip bg-color">docker</span>
+                                <a href="/tags/selenium/">
+                                    <span class="chip bg-color">selenium</span>
                                 </a>
                             
                         </div>
@@ -511,9 +516,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2021/11/23/jie-jue-geckodriver-executable-needs-to-be-in-path/">
                     <div class="card-image">
@@ -531,9 +537,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-11-23
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -546,6 +552,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -568,13 +575,13 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/11/18/nsenter-ming-ling/">
+                <a href="/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="nsenter命令">
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="容器如何安装新程序">
                         
-                        <span class="card-title">nsenter命令</span>
+                        <span class="card-title">容器如何安装新程序</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -591,8 +598,8 @@
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AD%A6%E4%B9%A0/" class="post-category">
-                                    学习
+                            <a href="/categories/%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" class="post-category">
+                                    学习笔记
                                 </a>
                             
                             
@@ -602,16 +609,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/linux/">
-                        <span class="chip bg-color">linux</span>
-                    </a>
-                    
                     <a href="/tags/%E5%AE%B9%E5%99%A8/">
                         <span class="chip bg-color">容器</span>
                     </a>
                     
-                    <a href="/tags/%E7%BD%91%E7%BB%9C/">
-                        <span class="chip bg-color">网络</span>
+                    <a href="/tags/docker/">
+                        <span class="chip bg-color">docker</span>
                     </a>
                     
                 </div>

@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>解决 selenium &#39;geckodriver&#39; executable needs to be in PATH.</title>
+      <link href="/2021/11/23/jie-jue-geckodriver-executable-needs-to-be-in-path/"/>
+      <url>/2021/11/23/jie-jue-geckodriver-executable-needs-to-be-in-path/</url>
+      
+        <content type="html"><![CDATA[<h1 id="issue"><a href="#issue" class="headerlink" title="issue"></a>issue</h1><p>早闻selenium自动化的大名，就想折腾一下，然后刚开始就进坑里了</p><p><code>selenium.common.exceptions.WebDriverException: Message: &#39;geckodriver&#39; executable needs to be in PATH. </code></p><h1 id="resolve"><a href="#resolve" class="headerlink" title="resolve"></a>resolve</h1><h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>win10 + Python 3.9.6 + selenium 3.141.0</p><h3 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h3><p>​    缺少geckodriver的驱动</p><h3 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h3><p><a href="https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/#firefox">https://www.selenium.dev/documentation/getting_started/installing_browser_drivers/#firefox</a></p><p>从 Selenium 3 开始，Mozilla 已经使用 geckodriver 接管了 Firefox 驱动程序的实现</p><ul><li><p>下载驱动</p><p><a href="https://github.com/mozilla/geckodriver/releases/tag/v0.30.0">https://github.com/mozilla/geckodriver/releases/tag/v0.30.0</a></p><p><img src="https://i.loli.net/2021/11/23/TiR7ne1lsh6yujH.png"></p></li></ul><p>​        根据自己的需求下载对应的版本</p><ul><li><p>添加驱动到python安装目录</p><p>获取Python的安装目录</p><p>设置-》高级系统设置-》高级-》环境变量-》编辑</p><p><img src="https://i.loli.net/2021/11/23/T3aMxw6XUJFWb5q.png"></p></li></ul><p><img src="https://i.loli.net/2021/11/23/hnUaymBOlLYbwCA.png"></p><p><img src="https://i.loli.net/2021/11/23/gFBPDrA3M7hYmqU.png"></p><p>将驱动复制到此路径下，重启pycharm</p><p><code>运行脚本</code></p><p><img src="https://i.loli.net/2021/11/23/KHLmDaTJiGUhzPp.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 学习笔记 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> python </tag>
+            
+            <tag> selenium </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>容器如何安装新程序</title>
       <link href="/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/"/>
       <url>/2021/11/18/rong-qi-ru-he-an-zhuang-xin-cheng-xu/</url>
